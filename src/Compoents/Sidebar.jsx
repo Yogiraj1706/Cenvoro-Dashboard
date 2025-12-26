@@ -23,47 +23,46 @@ export default function Sidebar({ isOpen, closeSidebar }) {
       <ul className="menu">
         {/* Colleges */}
         <li>
-  {/* Parent row */}
-  <div onClick={() => toggleMenu("colleges")}>
-    <i className="fa-solid fa-building-columns menu-icon"></i>
+          {/* Parent row */}
+          <div onClick={() => toggleMenu("colleges")}>
+            <i className="fa-solid fa-building-columns menu-icon"></i>
 
-    {/* Prevent toggle when clicking link */}
-    <NavLink
-      to="/colleges"
-      onClick={(e) => {
-        e.stopPropagation();   // prevents dropdown toggle
-        closeSidebar();        // closes off-canvas sidebar
-      }}
-    >
-      Colleges
-    </NavLink>
-  </div>
+            {/* Prevent toggle when clicking link */}
+            <NavLink
+              to="/colleges"
+              // onClick={(e) => {
+              //   e.stopPropagation();   // prevents dropdown toggle
+              //   closeSidebar();        // closes off-canvas sidebar
+              // }}
+            >
+              Colleges
+            </NavLink>
+          </div>
 
-  {/* Dropdown */}
-  <ul className={`dropdown ${openMenu === "colleges" ? "show" : ""}`}>
-    <li>
-      <NavLink to="/colleges/top" onClick={closeSidebar}>
-        Top Colleges
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/colleges/admissions" onClick={closeSidebar}>
-        Admissions
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/colleges/courses" onClick={closeSidebar}>
-        Courses
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/colleges/placements" onClick={closeSidebar}>
-        Placements
-      </NavLink>
-    </li>
-  </ul>
-</li>
-
+          {/* Dropdown */}
+          <ul className={`dropdown ${openMenu === "colleges" ? "show" : ""}`}>
+            <li>
+              <NavLink to="/colleges/top" onClick={closeSidebar}>
+                Top Colleges
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/colleges/admissions" onClick={closeSidebar}>
+                Admissions
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/colleges/courses" onClick={closeSidebar}>
+                Courses
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/colleges/placements" onClick={closeSidebar}>
+                Placements
+              </NavLink>
+            </li>
+          </ul>
+        </li>
 
         {/* Corporates */}
         <li>
