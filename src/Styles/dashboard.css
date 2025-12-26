@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.avatar img {
+  width: 75px;
+  height: auto;
+  object-fit: contain;  
+}
+
+.profile p {
+  font-size: 12px;
+  color: #ccc;
+  
+}
+/* Main */
+.main {
+  flex: 1;
+  padding: 25px;
+}
+
+.menu > li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e6e6e6;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+}
+
+/* Parent row */
+.menu > li > div {
+  display: flex;
+  align-items: center;      /* FIX: vertical alignment */
+  gap: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  white-space: nowrap;      /* FIX: prevent wrapping */
+}
+
+/* Icon */
+.menu-icon {
+  font-size: 16px;
+  min-width: 18px;          /* keeps alignment */
+  color: #94a3b8;
+}
+
+/* NavLink text */
+.menu > li > div a {
+  display: inline-flex;     /* FIX: inline with icon */
+  align-items: center;
+  flex: 1;                  /* take remaining space */
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Hover */
+.menu > li > div:hover {
+  background: #1e293b;
+}
+
+/* Active parent */
+.menu > li > div a.active {
+  color: #38bdf8;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.dropdown li {
+  font-size: 10px;
+  font-weight: 400;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.dropdown {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.dropdown.show {
+  max-height: 500px;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #eef1f6;
+}
+
+.sidebar {
+  width: 230px;
+  background: #123c5f;
+  color: #fff;
+  padding: 12px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background: #1e293b;
+  color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.page h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+.card label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.card select,
+.card input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+
+/* ===============================
+   TABLE RESPONSIVENESS
+================================ */
+.page {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 900px;   /* enables horizontal scroll */
+}
+
+/* Reduce spacing on tablets */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .menu > li > div {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+}
+
+/* ===============================
+   TABLET VIEW
+================================ */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .menu > li > div {
+    font-size: 13px;
+  }
+
+  .dropdown li {
+    font-size: 13px;
+  }
+}
+
+/* ===============================
+   MOBILE VIEW
+================================ */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 10px;
+  }
+
+  .page h2 {
+    font-size: 18px;
+  }
+
+  .table {
+    min-width: 700px;
+  }
+
+  .menu-icon {
+    font-size: 15px;
+  }
+}
+
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+/* Offcanvas Sidebar */
+@media (max-width: 768px) {
+  .hamburger {
+    display: inline-block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Overlay behind sidebar */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1100;
+}
+
+/* Sidebar above overlay */
+.sidebar {
+  z-index: 1200;
+}
