@@ -1,13 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-
 import Sidebar from "./Compoents/Sidebar";
 import Students from "./Pages/Students";
 import Corporates from "./Pages/Corporates";
 import Colleges from "./Pages/Colleges";
 import Jobs from "./Pages/Jobs";
 import Accounts from "./Pages/Accounts";
-
 import "./Styles/dashboard.css";
 
 function App() {
