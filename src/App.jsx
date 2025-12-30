@@ -4,12 +4,12 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 
-import Sidebar from "./Compoents/Sidebar";
-import Header from "./Compoents/Header";
-import Login from "./Compoents/Login";
+import Sidebar from "./Components/Sidebar";
+import Header from "./Components/Header";
+import Login from "./Components/Login";
 
 import Students from "./Pages/Students";
 import Corporates from "./Pages/Corporates";
