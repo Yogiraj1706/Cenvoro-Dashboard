@@ -20,7 +20,7 @@ export default function Login() {
 
       navigate("/", { replace: true });
     } else {
-      setError("Invalid email or password");
+      setError("Invalid email or password ");
     }
   };
 
@@ -48,7 +48,6 @@ export default function Login() {
             <label>Password</label>
             <input
               type="password"
-              placeholder="cenvoro123"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
