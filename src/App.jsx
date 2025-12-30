@@ -1,8 +1,16 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-import Header from "./Compoents/header";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
+
+
 import Sidebar from "./Compoents/Sidebar";
+import Header from "./Compoents/Header";
 import Login from "./Compoents/Login";
+
 import Students from "./Pages/Students";
 import Corporates from "./Pages/Corporates";
 import Colleges from "./Pages/Colleges";
@@ -11,24 +19,26 @@ import Accounts from "./Pages/Accounts";
 
 import "./Styles/dashboard.css";
 
-/* Protected Route Component */
+/* ===== Protected Route ===== */
 function ProtectedRoute({ children }) {
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
 }
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
-
     <Router>
       <Routes>
-        {/* ===== LOGIN PAGE ===== */}
-        <Route path="/login" element={<Login />} />
+        {/* ===== LOGIN ===== */}
+        <Route
+          path="/login"
+          element={isLoggedIn ? <Navigate to="/" replace /> : <Login />}
+        />
 
-        {/* ===== DASHBOARD (Protected) ===== */}
+        {/* ===== DASHBOARD (PROTECTED) ===== */}
         <Route
           path="/*"
           element={
@@ -50,10 +60,8 @@ function App() {
 
                 {/* Main Content */}
                 <div className="main-content">
-                  {/* Dashboard Header */}
                   <Header />
 
-                  {/* Hamburger */}
                   <div
                     className="hamburger"
                     onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -61,27 +69,27 @@ function App() {
                     <i className="fa-solid fa-bars"></i>
                   </div>
 
-                <Routes>
-                  <Route path="/" element={<Students />} />
-                  <Route path="/students" element={<Students />} />
-                  <Route path="/corporates" element={<Corporates />} />
-                  <Route path="/colleges" element={<Colleges />} />
-                  <Route path="/jobs" element={<Jobs />} />
-                  <Route path="/accounts" element={<Accounts />} />
-                </Routes>
+                  <Routes>
+                    <Route path="/" element={<Students />} />
+                    <Route path="/students" element={<Students />} />
+                    <Route path="/corporates" element={<Corporates />} />
+                    <Route path="/colleges" element={<Colleges />} />
+                    <Route path="/jobs" element={<Jobs />} />
+                    <Route path="/accounts" element={<Accounts />} />
+                  </Routes>
+                </div>
               </div>
-            </div>
             </ProtectedRoute>
           }
         />
 
-      {/* ===== FALLBACK ===== */}
-      <Route
-        path="*"
-        element={<Navigate to={isLoggedIn ? "/" : "/login"} />}
-      />
-    </Routes>
-    </Router >
+        {/* ===== FALLBACK ===== */}
+        <Route
+          path="*"
+          element={<Navigate to={isLoggedIn ? "/" : "/login"} replace />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

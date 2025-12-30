@@ -12,12 +12,13 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Demo credentials (replace with API later)
+    // Demo credentials
     if (email === "cenvoro@gmail.com" && password === "cenvoro123") {
-      localStorage.setItem("isLoggedIn", true);
+      // IMPORTANT: store STRING "true"
+      localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userName", "Admin");
 
-      navigate("/"); // go to dashboard
+      navigate("/", { replace: true });
     } else {
       setError("Invalid email or password");
     }
@@ -36,7 +37,7 @@ export default function Login() {
             <label>Email</label>
             <input
               type="email"
-              placeholder="admin@gmail.com"
+              placeholder="cenvoro@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -47,7 +48,7 @@ export default function Login() {
             <label>Password</label>
             <input
               type="password"
-              placeholder="admin123"
+              placeholder="cenvoro123"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
